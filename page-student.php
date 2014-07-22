@@ -29,13 +29,7 @@ get_header(); ?>
 					<h2>Your Profile</h2>
                     <div id="student-profile">
                     	<?php
-    						$current_user = wp_get_current_user();
-    						/**
-     						* @example Safe usage: $current_user = wp_get_current_user();
-     						* if ( !($current_user instanceof WP_User) )
-     						*     return;
-     						*/
-							
+    						$current_user = wp_get_current_user(); 
 							echo '<strong>First name</strong>: ' . $current_user->user_firstname . '<br />';
 							echo '<strong>Last name</strong>: ' . $current_user->user_lastname . '<br />';
     						echo '<strong>Email</strong>: ' . $current_user->user_email . '<br />';
@@ -48,7 +42,7 @@ get_header(); ?>
 							$user_degree = get_user_meta( $current_id, '_degree', true );
 							$user_grad_year = get_user_meta( $current_id, '_grad_year', true );
 							
-							
+							//Conditionals show these fields only if they are not empty
 							if ($user_phone != '') {
 								echo '<strong>Phone</strong>: ' . $user_phone . '<br />';
 							}
@@ -63,11 +57,9 @@ get_header(); ?>
 							}
 						?>
                         <br /><a href="http://www.esm.rochester.edu/iml/blog/edit-student-profile/">Edit Profile</a>
-                        <hr>
                     </div>
 				</div>
 				<!-- end of .post-entry -->
-
 				<?php get_template_part( 'post-data' ); ?>
 
 				<?php responsive_entry_bottom(); ?>
@@ -93,4 +85,34 @@ get_header(); ?>
 </div><!-- end of #content -->
 
 <?php get_sidebar( 'right' ); ?>
+<hr>
+<h2>Latest Gigs</h2>
+<div id="recent-gigs">
+    <table>
+		<?php
+			//Arguments show first 5 posts, and only published posts
+			$args = array( 'numberposts' => '5', 'post_status' => 'publish' );
+			$recent_posts = wp_get_recent_posts( $args );
+			foreach( $recent_posts as $recent ){
+				$category = get_the_category($recent["ID"]);
+				echo '<tr>';
+				echo '<td><a href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a> </td> ';
+				//Add highest level category to post
+				foreach($category as $cat)
+				{
+					//Conditionals catch all higher level categories
+					if ($cat->name == 'Performance Gig')
+    					echo '<td>' . $cat->name . '</td>';
+					if ($cat->name == 'Composition')
+    					echo '<td>' . $cat->name . '</td>';
+					if ($cat->name == 'Private Instruction')
+    					echo '<td>' . $cat->name . '</td>'; 
+				}
+				//Add each post's date
+				echo '<td>' . get_the_time('F j, Y', $recent["ID"]) . '</td>';
+				echo '</tr>';
+			}
+		?>
+	</table>
+</div>
 <?php get_footer(); ?>

@@ -114,5 +114,4 @@ get_header(); ?>
 	?>
 
 </div><!-- end of #content-full -->
-
 <?php get_footer(); ?>
