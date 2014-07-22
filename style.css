@@ -1,0 +1,130 @@
+/* 
+Theme Name: Gig Service
+Description: ESM Gig Service Theme
+Template: responsive
+Version: 0.0.1
+Author: William Paceley
+Author URI: http://arpegg.io
+
+*/
+
+/* <-----Header-----> */
+#logo {
+	padding-bottom: 15px;
+}
+
+.execphpwidget {
+	color: #00467f;
+}
+
+.avatar.avatar-30.photo {
+	border-radius: 20px;
+}
+/* <-----Menu-----> */
+.menu {
+  background-color: #00467f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#19588C), to(#00467f));
+  background-image: -webkit-linear-gradient(top, #19588C, #00467f);
+  background-image: -moz-linear-gradient(top, #19588C, #00467f);
+  background-image: -ms-linear-gradient(top, #19588C, #00467f);
+  background-image: -o-linear-gradient(top, #19588C, #00467f);
+  background-image: linear-gradient(top, #19588C, #00467f);
+  clear: both;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#19588C, endColorstr=#00467f);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.menu > li:first-child:hover {
+  background-color: #19588C;
+}
+
+.menu a {
+	text-shadow:none;
+	color: #ffdd00;
+	border-left: 1px solid #80a1b7;
+}
+
+.menu a:hover {
+  color: #ffdd00;
+  background-color: #00467f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#336B99), to(#00467f));
+  background-image: -webkit-linear-gradient(top, #336B99, #00467f);
+  background-image: -moz-linear-gradient(top, #336B99, #00467f);
+  background-image: -ms-linear-gradient(top, #336B99, #00467f);
+  background-image: -o-linear-gradient(top, #336B99, #00467f);
+  background-image: linear-gradient(top, #336B99, #00467f);
+  clear: both;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#336B99, endColorstr=#00467f);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.menu .current_page_item a,
+.menu .current-menu-item a {
+	background-color: #00467f;
+}
+
+#login-header {
+	color: #00467f;
+}
+
+#login-header:hover {
+	color: #80a1b7;
+}
+
+/*Responsive Header*/
+@media screen and (max-width: 650px) {
+	.js .main-nav {
+		position: relative;
+		background-color: #00467f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#336B99), to(#00467f));
+  background-image: -webkit-linear-gradient(top, #336B99, #00467f);
+  background-image: -moz-linear-gradient(top, #336B99, #00467f);
+  background-image: -ms-linear-gradient(top, #336B99, #00467f);
+  background-image: -o-linear-gradient(top, #336B99, #00467f);
+  background-image: linear-gradient(top, #336B99, #00467f);
+  clear: both;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#336B99, endColorstr=#00467f);
+  margin: 0 auto;
+	}
+	
+	.js .main-nav #responsive_current_menu_item {
+		color: #ffdd00;
+	}
+}
+
+/*<-----End Header----->*/
+
+#featured {
+	border: 2px solid #00467f;
+	background-color: #f9f9f9;
+}
+
+#featured p {
+	color: #00467f;
+}
+
+#featured h2 {
+	color: #00467f;
+}
+
+#featured h1 {
+	color: #00467f;
+}
+
+.featured-title {
+	padding-left: 5px;
+}
+
+.widget-wrapper {
+	border: 2px solid #00467f; 
+}
+
+/*<----Client Profile----->*/
+
+
+/*<-----Footer----->*/
+#footer a {
+	color: #00467f;
+}
