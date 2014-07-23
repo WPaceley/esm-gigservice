@@ -65,6 +65,11 @@ Author URI: http://arpegg.io
 	background-color: #00467f;
 }
 
+.menu .current_page_item a:hover,
+.menu .current-menu-item a:hover {
+	background-color: #00467f;
+}
+
 #login-header {
 	color: #00467f;
 }
@@ -73,9 +78,9 @@ Author URI: http://arpegg.io
 	color: #80a1b7;
 }
 
-/*Responsive Header*/
+/*Responsive Mobile Header*/
 @media screen and (max-width: 650px) {
-	.js .main-nav {
+.js .main-nav {
 		position: relative;
 		background-color: #00467f;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#336B99), to(#00467f));
@@ -102,7 +107,7 @@ Author URI: http://arpegg.io
 }
 
 #featured p {
-	color: #00467f;
+	color: #555555;
 }
 
 #featured h2 {

@@ -26,6 +26,11 @@ get_header(); ?>
 				<div class="post-entry">
                 	<!--This would display all body content typed in--turned off for this page-->
 					<?php //the_content( __( 'Read more &#8250;', 'responsive' ) ); ?>
+                    <!--Conditional to check whether or student has filled out their profile-->
+                    <?php $current_id = get_current_user_id();
+						  $user_degree = get_user_meta( $current_id, '_degree', true );
+						if ($user_degree != '') { ?>
+                     
 					<h2>Your Profile</h2>
                     <div id="student-profile">
                     	<?php
@@ -58,6 +63,8 @@ get_header(); ?>
 						?>
                         <br /><a href="http://www.esm.rochester.edu/iml/blog/edit-student-profile/">Edit Profile</a>
                     </div>
+                    <?php } else { 
+						gravity_form(8, false, false, false, '', false); } ?>
 				</div>
 				<!-- end of .post-entry -->
 				<?php get_template_part( 'post-data' ); ?>
@@ -83,9 +90,11 @@ get_header(); ?>
 	?>
 
 </div><!-- end of #content -->
-
 <?php get_sidebar( 'right' ); ?>
 <hr>
+<?php $current_id = get_current_user_id();
+						  $user_degree = get_user_meta( $current_id, '_degree', true );
+						if ($user_degree != '') { ?>
 <h2>Latest Gigs</h2>
 <div id="recent-gigs">
     <table>
@@ -115,4 +124,5 @@ get_header(); ?>
 		?>
 	</table>
 </div>
+<?php } ?>
 <?php get_footer(); ?>

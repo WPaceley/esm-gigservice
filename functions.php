@@ -258,3 +258,37 @@ class GWPreviewConfirmation {
 }
 
 GWPreviewConfirmation::init();
+
+//Customize login message to be more intuitive for users
+function custom_login_message() {
+	$message = "<strong>Note</strong>: Students must login with their NetID and Password. New clients can register <a href=\"http://www.esm.rochester.edu/iml/blog/register-client/\" style=\"text-decoration:none;\">here</a>.";
+	return $message;
+}
+
+add_filter('login_message', 'custom_login_message');
+
+//Adds custom ESM logo to login page
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/site-login-logo.png);
+			background-size: 283px 177px;
+            padding-bottom: 5px;
+			height: 177px;
+			width: 283px;
+
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+//Makes login ESM logo redirect to homepage (instead of wp.org)
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
