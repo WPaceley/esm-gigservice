@@ -95,6 +95,9 @@ get_header(); ?>
     		get_currentuserinfo();
     		$author_query = array('posts_per_page' => '-1','author' => $current_user->ID);
     		$author_posts = new WP_Query($author_query);
+			if (!($author_posts->have_posts())) {
+				echo '<p>You currently have no active gigs. Use the navigation menu to post one!</p>';
+			}
     		while($author_posts->have_posts()) : $author_posts->the_post();
     	?>
         <!--WP Loop starts here-->
