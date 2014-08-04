@@ -7,79 +7,146 @@ Author: William Paceley
 Author URI: http://arpegg.io
 
 */
+/* <-----Sitewide Changes-----> */
+h1, h2, h3, h4, h5, h6, h7 {
+	color: #00467f;
+}
 
 /* <-----Header-----> */
+.skip-container {
+	padding: 0;
+}
+
+#header {
+	background-color:transparent;
+	margin-top: 10px;
+}
+
 #logo {
-	padding-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .execphpwidget {
-	color: #00467f;
+	color: #fff;
+	margin: auto;
 }
 
 .avatar.avatar-30.photo {
 	border-radius: 20px;
 }
-/* <-----Menu-----> */
-.menu {
-  background-color: #00467f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#19588C), to(#00467f));
-  background-image: -webkit-linear-gradient(top, #19588C, #00467f);
-  background-image: -moz-linear-gradient(top, #19588C, #00467f);
-  background-image: -ms-linear-gradient(top, #19588C, #00467f);
-  background-image: -o-linear-gradient(top, #19588C, #00467f);
-  background-image: linear-gradient(top, #19588C, #00467f);
-  clear: both;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#19588C, endColorstr=#00467f);
-  margin: 0 auto;
-  border-radius: 2px;
-}
 
-.menu > li:first-child:hover {
-  background-color: #19588C;
-}
-
-.menu a {
-	text-shadow:none;
-	color: #ffdd00;
-	border-left: 1px solid #80a1b7;
-}
-
-.menu a:hover {
-  color: #ffdd00;
-  background-color: #00467f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#336B99), to(#00467f));
-  background-image: -webkit-linear-gradient(top, #336B99, #00467f);
-  background-image: -moz-linear-gradient(top, #336B99, #00467f);
-  background-image: -ms-linear-gradient(top, #336B99, #00467f);
-  background-image: -o-linear-gradient(top, #336B99, #00467f);
-  background-image: linear-gradient(top, #336B99, #00467f);
-  clear: both;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#336B99, endColorstr=#00467f);
-  margin: 0 auto;
-  border-radius: 2px;
-}
-
-.menu .current_page_item a,
-.menu .current-menu-item a {
-	background-color: #00467f;
-}
-
-.menu .current_page_item a:hover,
-.menu .current-menu-item a:hover {
-	background-color: #00467f;
-}
 
 #login-header {
-	color: #00467f;
+	color: #fff;
 }
 
 #login-header:hover {
 	color: #80a1b7;
 }
 
+#logout-header {
+	color: #fff;
+}
+
+#logout-header:hover {
+	color: #80a1b7;
+}
+/* <-----Menu-----> */
+@media screen and (min-width: 651px) {
+/*Handle custom background to extend menu bar and header*/
+body {
+    background: url('images/header.png') repeat-x scroll center top #FFFFFF;
+}
+
+/* Menu bar */
+.menu {
+	background-color: #ffd400;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd400), to(#ffd400));
+	background-image: -webkit-linear-gradient(top, #ffd400, #ffd400);
+	background-image: -moz-linear-gradient(top, #ffd400, #ffd400);
+	background-image: -ms-linear-gradient(top, #ffd400, #ffd400);
+	background-image: -o-linear-gradient(top, #ffd400, #ffd400);
+	background-image: linear-gradient(top, #ffd400, #ffd400);
+	clear: both;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffd400, endColorstr=#ffd400);
+	margin: 0 auto;
+}
+/* Menu items */
+.menu a {
+	border-left: none;
+	color: #00467f;
+	font-size: 13px;
+	font-weight: 700;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 0.9em;
+	text-shadow: none;
+}
+/* Menu item hover */
+.menu a:hover {
+	background-color: #00467f;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#00467f), to(#00467f));
+	background-image: -webkit-linear-gradient(top, #00467f, #00467f);
+	background-image: -moz-linear-gradient(top, #00467f, #00467f);
+	background-image: -ms-linear-gradient(top, #00467f, #00467f);
+	background-image: -o-linear-gradient(top, #00467f, #00467f);
+	background-image: linear-gradient(top, #00467f, #00467f);
+	color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00467f, endColorstr=#00467f);
+}
+/* Current page */
+.menu .current_page_item a,
+.menu .current-menu-item a {
+	background-color: #00467f;
+	color: #fff;
+}
+/* Menu dropdown */
+.menu li li {
+	background: #00467f;
+	background-image: none;
+	border: none;
+	color: #fff;
+	filter: none;
+    margin: -1px 0 1px 0;
+	width: auto;
+}
+/* Menu dropdown hover */
+.menu li li a:hover {
+	background: #00467f !important;
+	background-image: none;
+	border: none;
+	color: #fff;
+	filter: none;
+	text-decoration: underline;
+}
+
+/*Changes parent li when mouseover dropdown li*/
+ul.menu > li:hover a {
+	background-color: #00467f;
+	color: #fff;
+}
+}
 /*Responsive Mobile Header*/
 @media screen and (max-width: 650px) {
+.execphpwidget {
+	color: #00467f;
+}
+
+#logout-header {
+	color: #00467f;
+}
+#login-header {
+	color: #00467f;
+}
+
+.menu:first-child a {
+	color: #ffdd00;
+}
+
+#logo a img {
+	background-color: #00467f;
+	border-radius: 5px;
+}
 .js .main-nav {
 		position: relative;
 		background-color: #00467f;
@@ -92,11 +159,21 @@ Author URI: http://arpegg.io
   clear: both;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#336B99, endColorstr=#00467f);
   margin: 0 auto;
+}
+
+/*This handles the 3 horizontal line mobile button (no click)*/
+.js .main-nav a#responsive_menu_button {
+	background: url('images/select-icons.png') 0 5px no-repeat;
+}
+
+/*This handles the 3 horizontal line mobile button (clicked)*/
+.js .main-nav a#responsive_menu_button.responsive-toggle-open {
+		background: url('images/select-icons.png') 0 -46px no-repeat;
 	}
 	
-	.js .main-nav #responsive_current_menu_item {
-		color: #ffdd00;
-	}
+.js .main-nav #responsive_current_menu_item {
+	color: #ffdd00;
+}
 }
 
 /*<-----End Header----->*/
@@ -126,10 +203,120 @@ Author URI: http://arpegg.io
 	border: 2px solid #00467f; 
 }
 
-/*<----Client Profile----->*/
+.home-button {
+	display:block;
+	background-color:#888888;
+	text-align:center;
+	height: auto;
+	weidth: auto; 
+}
+
+/*<----Profiles----->*/
+/*Sidebar*/
+.menu-widget {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#widgets ul li a {
+    display: block;
+    width: 225px;
+	height: 30px;
+	color: #00467f;
+	border-top: solid 1px #d7d9da;
+	padding-top: 10px;
+}
 
 
+#widgets ul li:first-child a {
+	border-top: none;
+}
+
+#widgets ul li:hover {
+	list-style-type: disc;
+}
+
+#widgets ul li a:hover {
+	color: #80a1b7; 
+}
+
+/*Inner profile*/
+#wrapper hr {
+	background-color: #00467f;
+}
+
+#wrapper a {
+	color: #00467f;
+}
+
+#wrapper {
+	border: none;
+}
+
+#wrapper a:hover {
+	color: #80a1b7;
+}
+
+/* <-----Search-----> Seriously don't mess with these unless you know CSS well*/
+.searchandfilter {
+	width: 215px;
+}
+
+/*These are the default cases, only shows basic search*/
+.show-basic, .advanced-search {
+	display: none;
+}
+
+/*Specificity is weird here--revisit later to scope further*/
+#wrapper #content {
+	margin-top: 10px;
+}
+
+#wrapper .search-container h1 {
+	margin-top: 0;
+}
+
+#wrapper .search-container p {
+	display: none;
+	margin: 0 0;
+}
+
+#wrapper .search-container ul {
+	padding-left: 1.0em;
+	margin: 0;
+}
+
+form.searchandfilter.basic-search {
+	margin: 0;
+}
+
+/*<-----Search Sidebar----->*/
+#widgets .sidebar-search ul {
+	/*padding: 0 0 0 10px;*/
+	margin: 0;
+	width: 153px;
+}
+
+.searchandfilter h4 {
+	margin-bottom: 5px;
+}
+
+.widget-title h3 {
+	padding-bottom: 5px;
+}
+
+/*This hides the advanced search capabilities initially*/
+#widgets .sidebar-search div > ul > li:nth-child(2) {
+	/*display: none;*/
+}
+
+input[type='submit'] {
+	margin-top: 10px;
+}
 /*<-----Footer----->*/
 #footer a {
 	color: #00467f;
 }
+
+

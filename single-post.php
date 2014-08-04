@@ -130,7 +130,10 @@ get_header(); ?>
                     <?php } ?>
                     
                     <!--Contact Form/Interested in Gig-->
+                    <!--This conditional checks whether or not the current user is a student-->
+                    <?php if (! current_user_can(edit_published_posts) ) { ?>
 					<?php gravity_form(6, false, false, false, '', false); ?>
+                    <?php } ?>
 				</div><!-- end of .post-entry -->
 				
                 <!--This shows categories and tags, OFF for Gig Service-->
@@ -160,5 +163,10 @@ get_header(); ?>
 
 </div><!-- end of #content -->
 
-<?php get_sidebar(); ?>
+<!--This conditional checks whether or not the current user is a student-->
+<?php if (! current_user_can(edit_published_posts)) {
+	get_sidebar();
+} else {
+	get_sidebar( 'right' );
+} ?>
 <?php get_footer(); ?>

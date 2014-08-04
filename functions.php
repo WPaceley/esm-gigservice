@@ -5,12 +5,14 @@ Theme: Gig Service
 */
 
 //disable the admin bar
-//show_admin_bar(false);
+show_admin_bar(false);
 
 //!-----Gravity Forms - Dynamic Population-----!//
 
 //Student Email
 add_filter( 'gform_field_value_student_email', 'populate_email' );
+//Author Email
+add_filter('gform_field_value_author_email', 'populate_post_author_email');
 //First name
 add_filter( 'gform_field_value_student_first', 'populate_first_name' );
 //Last name
@@ -37,15 +39,23 @@ function populate_last_name(){
 	}
 }
 
+function populate_post_author_email($value){
+    global $post;
+
+    $author_email = get_the_author_meta('email', $post->post_author);
+
+    return $author_email;
+}
+
 //function to print 'delete' (read: draft) button
 function show_delete_button(){
 	Global $post;
 	//only print if client or admin
 	if (current_user_can('edit_published_posts')){
 	echo '
-		<form action="" method="POST" name="front_end_publish"><input id="pid" type="hidden" name="pid" value="'.$post->ID.'" />
+		<form action="" method="POST" name="front_end_publish" onsubmit="return confirm(\'Are you sure you want to delete this gig?\');"><input id="pid" type="hidden" name="pid" value="'.$post->ID.'" />
 		<input id="FE_PUBLISH" type="hidden" name="FE_PUBLISH" value="FE_PUBLISH" />
-		<input id="submit" type="submit" name="submit" value="Delete" onsubmit=""/></form>';
+		<input id="submit" type="submit" name="submit" value="Delete"/></form>';
 	}
 }
 
@@ -261,7 +271,7 @@ GWPreviewConfirmation::init();
 
 //Customize login message to be more intuitive for users
 function custom_login_message() {
-	$message = "<strong>Note</strong>: Students must login with their NetID and Password. New clients can register <a href=\"http://www.esm.rochester.edu/iml/blog/register-client/\" style=\"text-decoration:none;\">here</a>.";
+	$message = "<strong>Note</strong>: Students to register please login with your NetID and Password. New clients can register <a href=\"http://www.esm.rochester.edu/iml/blog/register-client/\" style=\"text-decoration:none;\">here</a>.";
 	return $message;
 }
 
@@ -292,3 +302,52 @@ function my_login_logo_url_title() {
     return 'Your Site Name and Info';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+/*//My attempt at dynamically setting the expiration date of posts
+//Here we go...let's see what we can make happen here
+function set_expiration($post_id) {
+	//Remove the default expiration date
+	remove_action('save_post', 'expirationdate_update_post_meta');
+	//Pull the date we need
+	$date = get_post_meta( $post_id , 'Date', true );
+	
+	expirationdate_update_post_meta_gig($post_id, $date);
+}
+
+function expirationdate_update_post_meta_gig($id, $date) {
+    // don't run the echo if this is an auto save
+
+    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+        return;
+
+    // don't run the echo if the function is called for saving revision.
+    $posttype = get_post_type($id);
+    if ( $posttype == 'revision' )
+    {
+        return;
+    } else {
+    //'M j, Y' is the format my ACF date field is outputting - can be differ from each setup!
+        $formatted_date = DateTime::createFromFormat('m/d/Y', $date);
+
+        $month	 = intval($formatted_date->format('m'));
+        $day 	 = intval($formatted_date->format('d'));
+        $year 	 = intval($formatted_date->format('y'));
+
+        //I am not using time in my ACF field, so I am setting it manually to the end of the day.
+        $hour 	 = 23;
+        $minute  = 59;
+
+        $opts = array();
+        $ts = get_gmt_from_date("$year-$month-$day $hour:$minute:0",'U');
+
+        // Schedule/Update Expiration
+        $opts['expireType'] = 'draft';
+        $opts['id'] = $id;
+
+        _scheduleExpiratorEvent($id,$ts,$opts);
+	}
+}*/
+
+/*add_action('gform_after_submission_1', 'set_expiration', 1);
+add_action('gform_after_submission_4', 'set_expiration', 1);
+add_action('gform_after_submission_5', 'set_expiration', 1);*/
