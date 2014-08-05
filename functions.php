@@ -303,51 +303,8 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
-/*//My attempt at dynamically setting the expiration date of posts
-//Here we go...let's see what we can make happen here
-function set_expiration($post_id) {
-	//Remove the default expiration date
-	remove_action('save_post', 'expirationdate_update_post_meta');
-	//Pull the date we need
-	$date = get_post_meta( $post_id , 'Date', true );
-	
-	expirationdate_update_post_meta_gig($post_id, $date);
+function gigservice_scripts() {
+	wp_enqueue_script( 'search', get_stylesheet_uri() . '/../js/search.js', array('jquery'), false );
 }
 
-function expirationdate_update_post_meta_gig($id, $date) {
-    // don't run the echo if this is an auto save
-
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
-        return;
-
-    // don't run the echo if the function is called for saving revision.
-    $posttype = get_post_type($id);
-    if ( $posttype == 'revision' )
-    {
-        return;
-    } else {
-    //'M j, Y' is the format my ACF date field is outputting - can be differ from each setup!
-        $formatted_date = DateTime::createFromFormat('m/d/Y', $date);
-
-        $month	 = intval($formatted_date->format('m'));
-        $day 	 = intval($formatted_date->format('d'));
-        $year 	 = intval($formatted_date->format('y'));
-
-        //I am not using time in my ACF field, so I am setting it manually to the end of the day.
-        $hour 	 = 23;
-        $minute  = 59;
-
-        $opts = array();
-        $ts = get_gmt_from_date("$year-$month-$day $hour:$minute:0",'U');
-
-        // Schedule/Update Expiration
-        $opts['expireType'] = 'draft';
-        $opts['id'] = $id;
-
-        _scheduleExpiratorEvent($id,$ts,$opts);
-	}
-}*/
-
-/*add_action('gform_after_submission_1', 'set_expiration', 1);
-add_action('gform_after_submission_4', 'set_expiration', 1);
-add_action('gform_after_submission_5', 'set_expiration', 1);*/
+add_action( 'wp_enqueue_scripts', 'gigservice_scripts' );

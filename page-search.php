@@ -18,7 +18,7 @@ Template Name:  Search
 
 get_header(); ?>
 
-<div id="content" class="grid col-620 search-container">
+<div id="content" class="grid col-620">
 
 	<?php get_template_part( 'loop-header' ); ?>
 
@@ -32,15 +32,10 @@ get_header(); ?>
 
 				<?php get_template_part( 'post-meta-page' ); ?>
 
-				<div class="post-entry">
-					<?php the_content( __( 'Read more &#8250;', 'responsive' ) ); ?>
-					<?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'responsive' ), 'after' => '</div>' ) ); ?>
-                    <a onclick="
-                    var elements = document.getElementsByClassName('advanced-search');
-    				for(var i = 0, length = elements.length; i < length; i++) {
-          			elements[i].style.display = 'block'; }
-                    "class="show-advanced">Advanced Search</a>
-                    <a href="#" class="show-basic">Basic Search</a>
+				<div class="post-entry search-container">
+				<?php the_content( __( 'Read more &#8250;', 'responsive' ) ); ?>
+				<a href="#" onclick="" class="show-advanced">Advanced Search</a>
+                <a href="#" onclick="" class="show-basic">Basic Search</a>
 				</div>
 				<!-- end of .post-entry -->
 
