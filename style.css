@@ -260,7 +260,11 @@ ul.menu > li:hover a {
 
 /* <-----Search-----> Seriously don't mess with these unless you know CSS well*/
 .searchandfilter {
-	width: 245px;
+	width: 215px;
+}
+
+#widgets .searchandfilter {
+	width: 225px;
 }
 
 /*These are the default cases, only shows basic search*/

@@ -34,8 +34,8 @@ get_header(); ?>
 
 				<div class="post-entry search-container">
 				<?php the_content( __( 'Read more &#8250;', 'responsive' ) ); ?>
-				<a href="#" onclick="" class="show-advanced">Advanced Search</a>
-                <a href="#" onclick="" class="show-basic">Basic Search</a>
+				<a href="#" onclick="showAdvanced()" class="show-advanced">Advanced Search</a>
+                <a href="#" onclick="showBasic()" class="show-basic">Basic Search</a>
 				</div>
 				<!-- end of .post-entry -->
 

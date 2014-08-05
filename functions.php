@@ -17,6 +17,8 @@ add_filter('gform_field_value_author_email', 'populate_post_author_email');
 add_filter( 'gform_field_value_student_first', 'populate_first_name' );
 //Last name
 add_filter( 'gform_field_value_student_last', 'populate_last_name' );
+//Post title
+add_filter( 'gform_field_value_post_title', 'populate_post_title' );
 
 function populate_email(){
 	if ( is_user_logged_in() ) {
@@ -45,6 +47,14 @@ function populate_post_author_email($value){
     $author_email = get_the_author_meta('email', $post->post_author);
 
     return $author_email;
+}
+
+function populate_post_title() {
+	global $post;
+	
+	$post_title = get_the_title($post->ID);
+	
+	return $post_title;
 }
 
 //function to print 'delete' (read: draft) button
