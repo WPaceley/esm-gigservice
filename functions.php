@@ -281,7 +281,7 @@ GWPreviewConfirmation::init();
 
 //Customize login message to be more intuitive for users
 function custom_login_message() {
-	$message = "<strong>Note</strong>: Students to register please login with your NetID and Password. New clients can register <a href=\"http://www.esm.rochester.edu/iml/blog/register-client/\" style=\"text-decoration:none;\">here</a>.";
+	$message = "<strong>Students</strong>: To register, please login below with your NetID and Password.<br /><br /> <strong>Clients </strong>: Looking for musicians? You can register <a href=\"http://www.esm.rochester.edu/iml/blog/register-client/\" style=\"text-decoration:none;\">here</a>.";
 	return $message;
 }
 

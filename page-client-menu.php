@@ -9,8 +9,11 @@ Template Name: Client Home with Menu
 Author: William Paceley
 Author URL: http://arpegg.io
 */
+?>
+<!--Don't use auth redirect for now...not working as intended.-->
+<?php //auth_redirect(); ?>
+<?php get_header(); ?>
 
-get_header(); ?>
 
 <div id="content" class="grid col-620">
 
@@ -26,8 +29,10 @@ get_header(); ?>
 				<div class="post-entry">
                 	<!--This would display all body content typed in--turned off for this page-->
 					<?php //the_content( __( 'Read more &#8250;', 'responsive' ) ); ?>
-					<h2>Your Profile</h2>
-                    <div id="client-profile">
+       				<?php if (current_user_can( 'edit_published_posts' ) ) { ?>
+						<h2>Your Profile</h2>
+                    	<div id="client-profile">
+                        
                     	<?php
     						$current_user = wp_get_current_user();
     						/**
@@ -40,8 +45,7 @@ get_header(); ?>
     						echo '<strong>Email</strong>: ' . $current_user->user_email . '<br />';
     						echo '<strong>First name</strong>: ' . $current_user->user_firstname . '<br />';
     						echo '<strong>Last name</strong>: ' . $current_user->user_lastname . '<br />';
-						?>
-                        <?php
+
 							$current_id = get_current_user_id(); 
   							$user_phone = get_user_meta( $current_id, '_phone', true ); 
   							$user_website = get_user_meta( $current_id, '_website', true );
@@ -56,8 +60,13 @@ get_header(); ?>
 							if ($user_website != '') {
 								echo '<strong>Website</strong>: ' . $user_website . '<br />';
 							}
-						?>
-                        <br /><a href="http://www.esm.rochester.edu/iml/blog/edit-client-profile/ ">Edit Profile</a>
+							echo '<br /><a href="http://www.esm.rochester.edu/iml/blog/edit-client-profile/ ">Edit Profile</a>';
+						 } else {
+							echo '<h2>Hello, and welcome!</h2>';
+							echo '<p>Welcome to the ESM Gig Service! You must be logged in as a client to view this page. If you don\'t have an account with us yet, please register below.<br /></p>
+							<p><a href="http://www.esm.rochester.edu/iml/blog/wp-login.php">Log In</a></p>
+							<p><a href="http://www.esm.rochester.edu/iml/blog/register-client/">Register</a></p>';
+						}?>
                     </div>
 				</div>
 				<!-- end of .post-entry -->
@@ -86,10 +95,11 @@ get_header(); ?>
 </div><!-- end of #content -->
 
 <?php get_sidebar( 'right' ); ?>
-<hr>
+<?php if ( current_user_can( 'edit_published_posts' ) ) { ?>
 <div id="client-gigs">
+	<hr />
 	<h2>Your Gigs</h2>
-    <table id="gig table">
+    <table id="gig-table">
     	<?php
 			global $current_user;
     		get_currentuserinfo();
@@ -114,4 +124,5 @@ get_header(); ?>
         <?php endwhile; ?>
         </table>
 </div>
+<?php } ?>
 <?php get_footer(); ?>

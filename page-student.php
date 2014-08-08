@@ -9,8 +9,10 @@ Template Name: Student Home
 Author: William Paceley
 Author URL: http://arpegg.io
 */
-
-get_header(); ?>
+?>
+<!--Don't use auth redirect for now...not working as intended.-->
+<?php //auth_redirect(); ?>
+<?php get_header(); ?>
 
 <div id="content" class="grid col-620">
 
@@ -63,8 +65,13 @@ get_header(); ?>
 						?>
                         <br /><a href="http://www.esm.rochester.edu/iml/blog/edit-student-profile/">Edit Profile</a>
                     </div>
-                    <?php } else { 
-						gravity_form(8, false, false, false, '', false); } ?>
+                    <?php } else if (current_user_can( 'gravityforms_view_addons' )) { 
+						gravity_form(8, false, false, false, '', false);
+						} else {
+							echo '<h2>Hello, and welcome!</h2>';
+							echo '<p>Welcome to the ESM Gig Service! You must be logged in as a student to view this page. If you haven\'t set up your account yet, please register below by entering your NetID and password.<br /></p>
+							<p><a href="http://www.esm.rochester.edu/iml/blog/wp-login.php">Log In</a></p>
+							<p><a href="http://www.esm.rochester.edu/iml/blog/wp-login.php">Register</a></p>'; } ?>
 				</div>
 				<!-- end of .post-entry -->
 				<?php get_template_part( 'post-data' ); ?>
@@ -91,10 +98,10 @@ get_header(); ?>
 
 </div><!-- end of #content -->
 <?php get_sidebar( 'right' ); ?>
-<hr>
 <?php $current_id = get_current_user_id();
 						  $user_degree = get_user_meta( $current_id, '_degree', true );
 						if ($user_degree != '') { ?>
+<hr />
 <h2>Latest Gigs</h2>
 <div id="recent-gigs">
     <table>

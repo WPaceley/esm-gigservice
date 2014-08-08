@@ -12,6 +12,18 @@ h1, h2, h3, h4, h5, h6, h7 {
 	color: #00467f;
 }
 
+h4 {
+	font-size: 1.1em;
+}
+
+label {
+	padding: 3px 0;
+}
+body {
+	font: 13px "Lucida Sans", "Lucida Grande","Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+	color: #333;
+}
+
 /* <-----Header-----> */
 .skip-container {
 	padding: 0;
@@ -76,7 +88,7 @@ body {
 	border-left: none;
 	color: #00467f;
 	font-size: 13px;
-	font-weight: 700;
+	font-weight: 200;
 	height: 25px;
 	line-height: 25px;
 	padding: 0 0.9em;
@@ -258,9 +270,30 @@ ul.menu > li:hover a {
 	color: #80a1b7;
 }
 
+#gig-table form {
+	margin: 0;
+}
+
+#gig-table input[type='submit'] {
+margin-top: 0px;
+}
+
+/*<-----Gravity Forms Styling----->*/
+code {
+	font: 14px "Lucida Sans", "Lucida Grande","Lucida Sans Unicode", Arial, Helvetica, sans-serif !important;
+}
+
+body .gform_wrapper .gform_body .gform_fields .gfield input[type=radio] {
+	margin-left: 5px;
+}
+
 /* <-----Search-----> Seriously don't mess with these unless you know CSS well*/
 .searchandfilter {
-	width: 215px;
+	width: 205px;
+}
+
+.searchandfilter ul {
+	list-style-type: none;
 }
 
 #widgets .searchandfilter {
@@ -310,6 +343,7 @@ form.searchandfilter.basic-search {
 	padding-bottom: 5px;
 }
 
+
 /*This hides the advanced search capabilities initially*/
 #widgets .sidebar-search div > ul > li:nth-child(2) {
 	/*display: none;*/
@@ -321,6 +355,11 @@ input[type='submit'] {
 /*<-----Footer----->*/
 #footer a {
 	color: #00467f;
+}
+
+/*THIS IS VERY BETA IF YOU ARE READING THIS AND THERE ARE PROBLEMS DELETE THIS*/
+.clearfix:after, .clearfix:before, #container:after, #container:before, .widget-wrapper:after, .widget-wrapper:before {
+	display: none;
 }
 
 
