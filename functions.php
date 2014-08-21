@@ -7,12 +7,54 @@ Theme: Gig Service
 //disable the admin bar
 show_admin_bar(false);
 
-//!-----Gravity Forms - Dynamic Population-----!//
+//!----This sets the expiration date by using a Gravity Forms Hook-----!
+
+function after_gig_submit($entry){
+	$post_id = $entry["post_id"];
+	
+	$date = get_post_meta( $post_id, 'Date', true );
+	
+	set_expiration($post_id, $date);
+}
+
+function set_expiration($id, $date) {
+
+	// 'm/d/Y' is the format of my GF date field
+    $formatted_date = DateTime::createFromFormat('m/d/Y', $date);
+
+    $month	 = intval($formatted_date->format('m'));
+    $day 	 = intval($formatted_date->format('d'));
+    $year 	 = intval($formatted_date->format('y'));
+
+	//Manually set post to expire at the end of the day.
+    $hour 	 = 23;
+    $minute  = 59;
+
+    $ts = get_gmt_from_date("$year-$month-$day $hour:$minute:0",'U');
+	
+	$opts = array(
+		'expireType' => 'draft',
+		'id' => $id
+	);
+
+    _scheduleExpiratorEvent($id, $ts, $opts);
+}
+
+//Add the action hooks for each form that can post gigs
+add_action('gform_after_submission_1', 'after_gig_submit', 1);
+add_action('gform_after_submission_4', 'after_gig_submit', 1);
+add_action('gform_after_submission_5', 'after_gig_submit', 1);
+
+//!-----Gravity Forms - Dynamic Population-----!
 
 //Student Email
 add_filter( 'gform_field_value_student_email', 'populate_email' );
+//Current User Email
+add_filter( 'gform_field_value_user_email', 'populate_email' );
 //Author Email
 add_filter('gform_field_value_author_email', 'populate_post_author_email');
+//Client Email
+add_filter('gform_field_value_client_email', 'populate_client_email');
 //First name
 add_filter( 'gform_field_value_student_first', 'populate_first_name' );
 //Last name
@@ -47,6 +89,14 @@ function populate_post_author_email($value){
     $author_email = get_the_author_meta('email', $post->post_author);
 
     return $author_email;
+}
+
+function populate_client_email() {
+	global $post;
+	
+	$client_email = get_post_meta( $post->ID, 'Client Email', true );
+	
+	return $client_email;
 }
 
 function populate_post_title() {
@@ -313,6 +363,7 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+//This is used to enqueue any custom JS that we want to use.
 function gigservice_scripts() {
 	wp_enqueue_script( 'search', get_stylesheet_uri() . '/../js/search.js', array('jquery'), false );
 }

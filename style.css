@@ -70,6 +70,13 @@ body {
     background: url('images/header.png') repeat-x scroll center top #FFFFFF;
 }
 
+/*Populate Desktop Logo with White Version*/
+#logo {
+	background-image: url( 'images/logo-lightbg.png' );
+	height: 100px;
+	width: 300px;
+}
+
 /* Menu bar */
 .menu {
 	background-color: #ffd400;
@@ -138,8 +145,35 @@ ul.menu > li:hover a {
 	color: #fff;
 }
 }
+
+@media (max-width: 980px) {
+	/*This fixes responsive problems with the sidebars*/
+	#widgets #nav_menu-2,
+	#widgets #text-6 {
+		display: inline-block;
+	}
+}
+
 /*Responsive Mobile Header*/
 @media screen and (max-width: 650px) {
+#logo a img {
+	background-image: url( 'images/logo-darkbg.png' );
+	height: 105px;
+	width: 300px;
+	padding-bottom: 5px;
+}
+
+/*Dropdown menu*/
+.js .main-nav .menu li a {
+	color: #fff;
+	background-color: #00467f;
+}
+
+.js .main-nav .menu li a:hover {
+	color: #ffdd00;
+	background-color: #00467f !important;
+}
+
 .execphpwidget {
 	color: #00467f;
 }
@@ -155,10 +189,10 @@ ul.menu > li:hover a {
 	color: #ffdd00;
 }
 
-#logo a img {
+/*#logo a img {
 	background-color: #00467f;
 	border-radius: 5px;
-}
+}*/
 .js .main-nav {
 		position: relative;
 		background-color: #00467f;
@@ -185,6 +219,11 @@ ul.menu > li:hover a {
 	
 .js .main-nav #responsive_current_menu_item {
 	color: #ffdd00;
+}
+
+/*Turns off tour for Mobile viewers.*/
+#tourcontrols {
+	display: none;
 }
 }
 
@@ -247,6 +286,10 @@ ul.menu > li:hover a {
 
 #widgets ul li:hover {
 	list-style-type: disc;
+}
+
+#widgets .searchandfilter ul li:hover {
+	list-style-type: none;
 }
 
 #widgets ul li a:hover {
@@ -358,8 +401,11 @@ input[type='submit'] {
 }
 
 /*THIS IS VERY BETA IF YOU ARE READING THIS AND THERE ARE PROBLEMS DELETE THIS*/
+/*I literally removed clearfix but it works for now \(^-^)/*/
 .clearfix:after, .clearfix:before, #container:after, #container:before, .widget-wrapper:after, .widget-wrapper:before {
 	display: none;
 }
 
-
+.post-meta {
+	display: none;
+}

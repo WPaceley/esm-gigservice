@@ -19,6 +19,7 @@ get_header(); ?>
 
 <div id="content" class="grid col-620">
 
+	<?php if (current_user_can( 'gravityforms_view_addons' )) { ?>
 	<?php if( have_posts() ) : ?>
 
 		<?php while( have_posts() ) : the_post(); ?>
@@ -39,7 +40,6 @@ get_header(); ?>
                     <div id="recent-gigs">
     <table>
 		<?php
-			//Arguments show first 5 posts, and only published posts
 			$args = array( 'numberposts' => '-1', 'post_status' => 'publish' );
 			$recent_posts = wp_get_recent_posts( $args );
 			foreach( $recent_posts as $recent ){
@@ -89,6 +89,12 @@ get_header(); ?>
 
 	endif;
 	?>
+    <?php } else { 
+		echo '<h2>Hello, and welcome!</h2>';
+		echo '<p>Welcome to the ESM Gig Service! You must be logged in as a student to view this page. If you haven\'t set up your account yet, please register below by entering your NetID and password.<br /></p>
+			  <p><a href="http://www.esm.rochester.edu/iml/blog/wp-login.php">Log In</a></p>
+			  <p><a href="http://www.esm.rochester.edu/iml/blog/wp-login.php">Register</a></p>';
+	}?>
 
 </div><!-- end of #content -->
 

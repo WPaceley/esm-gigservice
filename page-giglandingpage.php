@@ -38,12 +38,12 @@
             <div class="inner">
               <h3 class="masthead-brand">Eastman Gig Service</h3>
               <ul class="nav masthead-nav">
-                <li><a href="https://www.esm.rochester.edu/iml/blog/faq" target="_blank">FAQ</a></li>
-                <li><a href="https://www.esm.rochester.edu/iml/blog/gig-service-contact" target="_blank">Contact</a></li>
+                <li><a href="https://www.esm.rochester.edu/iml/blog/faq">FAQ</a></li>
+                <li><a href="https://www.esm.rochester.edu/iml/blog/gig-service-contact">Contact</a></li>
                 <li class="active"><?php if ( is_user_logged_in() ) { ?>
 					<a href="<?php echo wp_logout_url(); ?>" title="Logout">Logout</a>
  				<?php } else {
-    				echo '<a href="http://esm.rochester.edu/iml/blog/wp-login.php" id="login-header">Log In</a>';
+    				echo '<a href="http://www.esm.rochester.edu/iml/blog/wp-login.php" id="login-header">Log In</a>';
 				} ?></li>
               </ul>
             </div>
@@ -58,17 +58,18 @@
             </p>
           </div>
 
-          <div class="mastfoot">
-            <div class="inner">
-            </div>
-          </div>
-
+		  <div class="mastfoot">
+    	  	<div class="inner">
+        		<a href="http://www.esm.rochester.edu/iml/">Institute for Music Leadership</a> | 
+            	<a href="http://www.esm.rochester.edu/iml/careers/">Careers and Professional Development</a>
+        	</div>
+    	  </div>
+          
         </div>
 
       </div>
-
+      
     </div>
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

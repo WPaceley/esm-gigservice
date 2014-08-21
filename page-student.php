@@ -37,9 +37,9 @@ Author URL: http://arpegg.io
                     <div id="student-profile">
                     	<?php
     						$current_user = wp_get_current_user(); 
-							echo '<strong>First name</strong>: ' . $current_user->user_firstname . '<br />';
-							echo '<strong>Last name</strong>: ' . $current_user->user_lastname . '<br />';
-    						echo '<strong>Email</strong>: ' . $current_user->user_email . '<br />';
+							echo '<b>First name</b>: ' . $current_user->user_firstname . '<br />';
+							echo '<b>Last name</b>: ' . $current_user->user_lastname . '<br />';
+    						echo '<b>Email</b>: ' . $current_user->user_email . '<br />';
     						
 						?>
                         <?php
@@ -48,19 +48,23 @@ Author URL: http://arpegg.io
   							$user_website = get_user_meta( $current_id, '_website', true );
 							$user_degree = get_user_meta( $current_id, '_degree', true );
 							$user_grad_year = get_user_meta( $current_id, '_grad_year', true );
+							$user_instrument = get_user_meta( $current_id, '_instrument', true );
 							
 							//Conditionals show these fields only if they are not empty
 							if ($user_phone != '') {
-								echo '<strong>Phone</strong>: ' . $user_phone . '<br />';
+								echo '<b>Phone</b>: ' . $user_phone . '<br />';
 							}
 							if ($user_website != '') {
-								echo '<strong>Website</strong>: ' . $user_website . '<br />';
+								echo '<b>Website</b>: ' . $user_website . '<br />';
+							}
+							if ($user_instrument != '') {
+								echo '<b>Instrument</b>: ' . $user_instrument . '<br />';
 							}
 							if ($user_degree != '') {
-								echo '<strong>Degree</strong>: ' . $user_degree . '<br />';
+								echo '<b>Degree</b>: ' . $user_degree . '<br />';
 							}
 							if ($user_grad_year != '') {
-								echo '<strong>Graduation Year</strong>: ' . $user_grad_year . '<br />';
+								echo '<b>Graduation Year</b>: ' . $user_grad_year . '<br />';
 							}
 						?>
                         <br /><a href="http://www.esm.rochester.edu/iml/blog/edit-student-profile/">Edit Profile</a>
